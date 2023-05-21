@@ -1,5 +1,7 @@
 "use-client";
 
+import Login from "@/components/Login";
+
 export default function Home() {
-  return <h1>pagina principal</h1>;
+  return <Login />;
 }
