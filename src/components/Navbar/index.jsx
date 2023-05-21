@@ -16,7 +16,10 @@ const Navbar = () => {
             height={60}
           />
         </Link>
-        <p className="font-bold text-white text-xl duration-300 hover:opacity-40 cursor-pointer sm:text-xl">
+        <p
+          className="font-bold text-white text-xl duration-300 hover:opacity-40 cursor-pointer sm:text-xl"
+          onClick={() => console.log("work")}
+        >
           Sair
         </p>
       </div>
