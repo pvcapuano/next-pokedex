@@ -1,18 +1,25 @@
 "use client";
-
 import React, { useState } from "react";
 /* import useLogin from "@/hooks/useLogin"; */
-import Head from "next/head";
-
-import { toast } from "react-toastify";
 import Link from "next/link";
+import { toast } from "react-toastify";
+/* import useSignup from "@/hooks/useSignup"; */
 
-const Login = () => {
+const SignupPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoggingIn, setIsLoggingIn] = useState(true);
   const [isLoggingInWithGoogle, setIsLoggingInWithGoogle] = useState(false);
+  /* 
+  const { error, login } = useLogin();
+  const { signup } = useSignup();
 
-  /* const { error, login } = useLogin(); */
+  const { googlelogin } = useGoogleLogin(); */
+
+  const handleGoogleLogin = () => {
+    setIsLoggingInWithGoogle(true);
+    googlelogin();
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,14 +43,14 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-blue-700 h-screen flex justify-center items-center">
+    <>
       <form
-        className="flex-1 text-xs sm:text-sm flex flex-col justify-center items-center gap-2 sm:gap-4 text-red-500"
+        className="bg-blue-700 h-screen flex-1 text-xs sm:text-sm flex flex-col justify-center items-center gap-2 sm:gap-4"
         onSubmit={handleSubmit}
       >
-        <p className="text-amber-500 text-lg sm:text-md">Seja bem-vindo!</p>
+        <p className="text-amber-500 text-lg sm:text-md">Faça seu</p>
         <h1 className="font-extrabold select-none text-2xl sm:text-6xl text-amber-500">
-          Entrar
+          Cadastro
         </h1>
         <input
           type="text"
@@ -65,21 +72,19 @@ const Login = () => {
           type="submit"
           className="w-full max-w-[40ch] text-amber-500 border border-white border-solid uppercase py-2 duration-300 relative after:absolute after:top-0 after:right-full after:bg-white after:z-10 after:w-full after:h-full overflow-hidden hover:after:translate-x-full after:duration-300 hover:text-blue-700"
         >
-          <h2 className="relative z-20">Entrar</h2>
+          <h2 className="relative z-20 ">Cadastrar</h2>
         </button>
-        <h2 className="duration-300 text-amber-500 hover:scale-110 cursor-pointer uppercase">
-          <Link href="/signup">Cadastre-se</Link>
+        <h2
+          onClick={() => {
+            setIsLoggingIn(!isLoggingIn);
+          }}
+          className="duration-300 text-amber-500 hover:scale-110 cursor-pointer uppercase"
+        >
+          <Link href="/">Login</Link>
         </h2>
-
-        {/*  <label className="w-full max-w-[40ch] py-2 flex items-center justify-center border border-white border-solid duration-300 hover:scale-110 cursor-pointer">
-          <button className="uppercase" onClick={handleGoogleLogin}>
-            Sign In With Google
-            <i className="fa-brands fa-google ml-2"></i>
-          </button>
-        </label> */}
       </form>
-    </div>
+    </>
   );
 };
 
-export default Login;
+export default SignupPage;
