@@ -1,45 +1,30 @@
-"use client";
 import React, { useState } from "react";
-/* import useLogin from "@/hooks/useLogin"; */
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-/* import useSignup from "@/hooks/useSignup"; */
+import useLogin from "@/hooks/useLogin";
+import useSignup from "@/hooks/useSignup";
 
 const SignupPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoggingIn, setIsLoggingIn] = useState(true);
-  const [isLoggingInWithGoogle, setIsLoggingInWithGoogle] = useState(false);
-  /* 
-  const { error, login } = useLogin();
-  const { signup } = useSignup();
-
-  const { googlelogin } = useGoogleLogin(); */
-
-  const handleGoogleLogin = () => {
-    setIsLoggingInWithGoogle(true);
-    googlelogin();
-  };
+  const { error, signup } = useSignup();
+  const router = useRouter();
+  const { login } = useLogin();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Check if user is logging in with Google
-    if (!email && !password && isLoggingInWithGoogle) {
-      googlelogin();
-      return;
-    }
-
     // Validate email and password
     if (!email || !password) {
-      toast.error("Complete your email or password.");
+      toast.error("Complete seu email ou senha.");
       return;
     }
 
+    signup(email, password);
     await login(email, password);
 
-    setEmail("");
-    setPassword("");
+    router.push("/");
   };
 
   return (

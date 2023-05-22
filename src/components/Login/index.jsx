@@ -1,7 +1,5 @@
-"use client";
-
 import React, { useState } from "react";
-/* import useLogin from "@/hooks/useLogin"; */
+import useLogin from "@/hooks/useLogin";
 import Head from "next/head";
 
 import { toast } from "react-toastify";
@@ -10,22 +8,15 @@ import Link from "next/link";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoggingInWithGoogle, setIsLoggingInWithGoogle] = useState(false);
 
-  /* const { error, login } = useLogin(); */
+  const { error, login } = useLogin();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Check if user is logging in with Google
-    if (!email && !password && isLoggingInWithGoogle) {
-      googlelogin();
-      return;
-    }
-
     // Validate email and password
     if (!email || !password) {
-      toast.error("Complete your email or password.");
+      toast.error("Complete seu email ou senha.");
       return;
     }
 
@@ -70,13 +61,6 @@ const Login = () => {
         <h2 className="duration-300 text-amber-500 hover:scale-110 cursor-pointer uppercase">
           <Link href="/signup">Cadastre-se</Link>
         </h2>
-
-        {/*  <label className="w-full max-w-[40ch] py-2 flex items-center justify-center border border-white border-solid duration-300 hover:scale-110 cursor-pointer">
-          <button className="uppercase" onClick={handleGoogleLogin}>
-            Sign In With Google
-            <i className="fa-brands fa-google ml-2"></i>
-          </button>
-        </label> */}
       </form>
     </div>
   );

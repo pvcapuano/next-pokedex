@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
-/* import useLogout from "../../hooks/useLogout"; */
+import useLogout from "../../hooks/useLogout";
 
 const Navbar = () => {
-  /* const { logout } = useLogout(); */
+  const { logout } = useLogout();
   return (
     <>
       <div className="sticky top-0 w-full left-0 bg-red-600 flex items-center justify-between p-4 border-b border-solid border-white">
@@ -18,7 +18,7 @@ const Navbar = () => {
         </Link>
         <p
           className="font-bold text-white text-xl duration-300 hover:opacity-40 cursor-pointer sm:text-xl"
-          onClick={() => console.log("work")}
+          onClick={logout}
         >
           Sair
         </p>
