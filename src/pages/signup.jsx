@@ -1,32 +1,10 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { toast } from "react-toastify";
-import useLogin from "@/hooks/useLogin";
-import useSignup from "@/hooks/useSignup";
+import useSignupForm from "@/components/Login/hook/useSignupForm";
 
 const SignupPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const { error, signup } = useSignup();
-  const router = useRouter();
-  const { login } = useLogin();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // Validate email and password
-    if (!email || !password) {
-      toast.error("Complete seu email ou senha.");
-      return;
-    }
-
-    signup(email, password);
-    await login(email, password);
-
-    router.push("/");
-  };
-
+  const { email, password, setEmail, setPassword, handleSubmit } =
+    useSignupForm();
   return (
     <>
       <form
