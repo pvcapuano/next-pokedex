@@ -1,30 +1,10 @@
 import React, { useState } from "react";
-import useLogin from "@/hooks/useLogin";
-import Head from "next/head";
-
-import { toast } from "react-toastify";
+import useLoginForm from "./hook/useLoginForm";
 import Link from "next/link";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const { error, login } = useLogin();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // Validate email and password
-    if (!email || !password) {
-      toast.error("Complete seu email ou senha.");
-      return;
-    }
-
-    await login(email, password);
-
-    setEmail("");
-    setPassword("");
-  };
+  const { email, password, setEmail, setPassword, handleSubmit } =
+    useLoginForm();
 
   return (
     <div className="bg-blue-700 h-screen flex justify-center items-center">
