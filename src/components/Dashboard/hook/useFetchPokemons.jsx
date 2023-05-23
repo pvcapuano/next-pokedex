@@ -15,13 +15,15 @@ const useFetchPokemons = (currentPage, limit) => {
 
         const pokemonPromises = data.results.map(async (pokemon) => {
           const pokemonResponse = await fetch(pokemon.url);
+
           const pokemonData = await pokemonResponse.json();
 
           const { name, sprites, types } = pokemonData;
-          const image = sprites.front_default;
+          const image = sprites.other.dream_world.front_default;
+          const id = pokemonData.id;
           const type = types.map((type) => type.type.name);
 
-          return { name, image, type };
+          return { name, image, type, id };
         });
 
         const pokemonList = await Promise.all(pokemonPromises);

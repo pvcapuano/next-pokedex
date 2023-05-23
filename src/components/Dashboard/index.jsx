@@ -25,7 +25,7 @@ const Dashboard = () => {
       <h1>chegou no dashboard</h1>
 
       {console.log(pokemons)}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-2 my-3">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 my-3">
         {pokemons.map((pokemon) => (
           <Card pokemon={pokemon} />
         ))}
