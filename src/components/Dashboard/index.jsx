@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import useFetchPokemons from "./hook/useFetchPokemons";
 import Card from "../Card";
+import Link from "next/link";
+import Pokedex from "../Pokedex";
 
-const Dashboard = () => {
+const Dashboard = ({ handlePokedexClick }) => {
   const limit = 10; // Número de Pokémon por página
   const maxPages = 15; // Número máximo de páginas
   const [currentPage, setCurrentPage] = useState(1);
+  const [showPokedex, setShowPokedex] = useState(false);
   const { pokemons, totalPages } = useFetchPokemons(currentPage, limit);
 
   const handlePrevPage = () => {
@@ -20,18 +23,20 @@ const Dashboard = () => {
     }
   };
 
+  const handleShowPokedex = () => {
+    setShowPokedex(true);
+  };
+
   return (
     <div className="flex flex-col justify-center items-center">
-      <h1>chegou no dashboard</h1>
-
       {console.log(pokemons)}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 my-3">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 my-3">
         {pokemons.map((pokemon) => (
           <Card pokemon={pokemon} />
         ))}
       </div>
 
-      <div className="w-1/5 flex justify-between text-white p-2">
+      <div className="w-3/5 md:w-2/5 lg:w-1/5 flex justify-between text-white p-2">
         <button
           className="flex items-center justify-center"
           onClick={handlePrevPage}
@@ -53,23 +58,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-/* export async function getStaticProps() {
-  const maxPokemons = 151;
-  const api = `https://pokeapi.co/api/v2/pokemon/`;
-
-  const res = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=151");
-
-  const data = await res.json();
-
-  // add pokemon index
-  data.results.forEach((item, index) => {
-    item.id = index + 1;
-  });
-
-  return {
-    props: {
-      pokemons: data.results,
-    },
-  };
-} */
