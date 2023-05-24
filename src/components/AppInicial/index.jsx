@@ -2,9 +2,22 @@ import React, { useState } from "react";
 import Pokedex from "../Pokedex";
 import Dashboard from "../Dashboard";
 import Button from "../Button";
+import { useAuthContext } from "@/hooks/useAuthContext";
+import useCollection from "@/hooks/useCollection";
 
 const AppInicial = () => {
   const [showPokedex, setShowPokedex] = useState(false);
+  const { user } = useAuthContext();
+  const { documents: favoritos } = useCollection("favoritos", [
+    "uid",
+    "==",
+    user.uid,
+  ]);
+  const { documents: avistados } = useCollection("avistados", [
+    "uid",
+    "==",
+    user.uid,
+  ]);
 
   const handleToggleView = () => {
     setShowPokedex(!showPokedex);
@@ -17,7 +30,7 @@ const AppInicial = () => {
           <div className="my-4 w-full ">
             <Button onClick={handleToggleView} text="Voltar" />
           </div>
-          <Pokedex />
+          <Pokedex favoritos={favoritos} avistados={avistados} />
         </div>
       ) : (
         <div className="flex flex-col justify-center items-center p-4">

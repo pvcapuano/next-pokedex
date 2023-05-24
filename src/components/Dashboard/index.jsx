@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import { db } from "@/config/firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { useAuthContext } from "@/hooks/useAuthContext";
-import Link from "next/link";
 
 const Dashboard = () => {
   const limit = 10; // Número de Pokémon por página
@@ -43,7 +42,6 @@ const Dashboard = () => {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      {console.log(pokemons)}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 my-3">
         {pokemons.map((pokemon) => (
           <Card
