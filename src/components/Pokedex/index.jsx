@@ -13,7 +13,7 @@ const Pokedex = ({ favoritos, avistados }) => {
   });
 
   return (
-    <div className="h-screen">
+    <div className="h-full">
       {console.log(favoritos)}
       {console.log(avistados)}
 
@@ -25,11 +25,31 @@ const Pokedex = ({ favoritos, avistados }) => {
         </div>
       ))}
 
+      <h2>Favoritos:</h2>
+      {favoritosList.map((favorito) => (
+        <div key={favorito.id}>
+          <h1>{favorito.name}</h1>
+          <img src={favorito.image} />
 
-      
-      <div>
-        <h2>Favoritos:</h2>
-      </div>
+          {favorito.types.map((item, index) => (
+            <span
+              className="text-blue-600 font-bold bg-blue-200 text-sm md:text-md border rounded-md p-1 uppercase mx-2 cursor-pointer"
+              key={index}
+            >
+              {item}
+            </span>
+          ))}
+          <h3 className="text-blue-200 text-sm md:text-md">
+            {favorito.height * 10} cm
+          </h3>
+          <h3 className="text-blue-200 text-sm md:text-md">
+            {favorito.weight / 10} kg
+          </h3>
+          <h1 className="font-bold text-red-600 text-xl md:text-2xl">
+            {favorito.observations}
+          </h1>
+        </div>
+      ))}
     </div>
   );
 };
