@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import useFetchPokemons from "./hook/useFetchPokemons";
 import Card from "../Card";
+import { toast } from "react-toastify";
+import { db } from "@/config/firebase";
+import { collection, addDoc } from "firebase/firestore";
+import { useAuthContext } from "@/hooks/useAuthContext";
 import Link from "next/link";
-import Pokedex from "../Pokedex";
 
-const Dashboard = ({ handlePokedexClick }) => {
+const Dashboard = () => {
   const limit = 10; // Número de Pokémon por página
   const maxPages = 15; // Número máximo de páginas
   const [currentPage, setCurrentPage] = useState(1);
-  const [showPokedex, setShowPokedex] = useState(false);
   const { pokemons, totalPages } = useFetchPokemons(currentPage, limit);
+  const { user } = useAuthContext();
 
   const handlePrevPage = () => {
     if (currentPage > 1) {
@@ -23,8 +26,19 @@ const Dashboard = ({ handlePokedexClick }) => {
     }
   };
 
-  const handleShowPokedex = () => {
-    setShowPokedex(true);
+  const handleSubmit = async (pokemon) => {
+    const ref = collection(db, "avistados");
+
+    await addDoc(ref, {
+      name: pokemon.name,
+      image: pokemon.image,
+      id: pokemon.id,
+      uid: user.uid,
+    });
+
+    toast.warn(`Voce avistou o ${pokemon.name}! Vamos capturá-lo?`, {
+      theme: "colored",
+    });
   };
 
   return (
@@ -32,7 +46,11 @@ const Dashboard = ({ handlePokedexClick }) => {
       {console.log(pokemons)}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 my-3">
         {pokemons.map((pokemon) => (
-          <Card pokemon={pokemon} />
+          <Card
+            key={pokemon.id}
+            pokemon={pokemon}
+            handleSubmit={handleSubmit}
+          />
         ))}
       </div>
 
