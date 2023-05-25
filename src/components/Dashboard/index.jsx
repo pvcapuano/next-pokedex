@@ -52,7 +52,7 @@ const Dashboard = () => {
         ))}
       </div>
 
-      <div className="w-3/5 md:w-2/5 lg:w-1/5 flex justify-between text-white p-2">
+      <div className="w-3/5 md:w-2/5 lg:w-1/5 flex justify-between text-blue-800 p-2">
         <button
           className="flex items-center justify-center"
           onClick={handlePrevPage}

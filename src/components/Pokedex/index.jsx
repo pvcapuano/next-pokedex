@@ -13,43 +13,89 @@ const Pokedex = ({ favoritos, avistados }) => {
   });
 
   return (
-    <div className="h-full">
+    <div className="w-full h-full flex flex-col">
       {console.log(favoritos)}
       {console.log(avistados)}
 
-      <h2>Avistados:</h2>
-      {avistadosList.map((avistado) => (
-        <div key={avistado.id}>
-          <p>{avistado.name}</p>
-          <img src={avistado.image} />
+      <div className="flex flex-col bg-white rounded-xl p-4">
+        <h2 className="font-bold text-blue-800 text-lg md:text-xl mb-2">
+          Avistados:
+        </h2>
+        <div className="flex justify-center md:justify-start">
+          <div className=" grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 my-4 ">
+            {avistadosList.map((avistado) => (
+              <div
+                className="w-32 border flex flex-col items-center justify-between bg-blue-100 rounded-lg shadow-2xl p-2"
+                key={avistado.id}
+              >
+                <h1 className="font-bold text-blue-800 uppercase text-sm md:text-md">
+                  {avistado.name}
+                </h1>
+                <img className="w-24 md:w-32" src={avistado.image} />
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
+      </div>
 
-      <h2>Favoritos:</h2>
-      {favoritosList.map((favorito) => (
-        <div key={favorito.id}>
-          <h1>{favorito.name}</h1>
-          <img src={favorito.image} />
+      <div className="flex flex-col bg-white rounded-xl p-4 my-8">
+        <h2 className="font-bold text-blue-800 text-lg md:text-xl mb-2">
+          Favoritos:
+        </h2>
+        <div className="flex justify-center lg:justify-start">
+          <div className=" grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 my-4 ">
+            {favoritosList.map((favorito) => (
+              <div
+                className="w-48 md:w-56 min-h-full border flex flex-col items-center justify-between bg-blue-100 rounded-lg shadow-2xl p-2"
+                key={favorito.id}
+              >
+                <h1 className="font-bold text-blue-800 uppercase text-md md:text-lg">
+                  {favorito.name}
+                </h1>
+                <img className="w-24 md:w-32" src={favorito.image} />
 
-          {favorito.types.map((item, index) => (
-            <span
-              className="text-blue-600 font-bold bg-blue-200 text-sm md:text-md border rounded-md p-1 uppercase mx-2 cursor-pointer"
-              key={index}
-            >
-              {item}
-            </span>
-          ))}
-          <h3 className="text-blue-200 text-sm md:text-md">
-            {favorito.height * 10} cm
-          </h3>
-          <h3 className="text-blue-200 text-sm md:text-md">
-            {favorito.weight / 10} kg
-          </h3>
-          <h1 className="font-bold text-red-600 text-xl md:text-2xl">
-            {favorito.observations}
-          </h1>
+                <div className="flex my-1">
+                  {favorito.types.map((item, index) => (
+                    <span
+                      className="text-blue-600 font-bold bg-blue-200 text-sm md:text-md border rounded-md p-1 uppercase mx-2 cursor-pointer"
+                      key={index}
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex flex-col justify-center items-center">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-blue-800 text-md md:text-lg font-bold">
+                      Altura:
+                    </h3>
+                    <h3 className="text-blue-800 text-sm md:text-md ml-1">
+                      {favorito.height * 10} cm
+                    </h3>
+                  </div>
+
+                  <div className="flex justify-center items-center ml-2">
+                    <h3 className="text-blue-800 text-md md:text-lg font-bold">
+                      Peso:
+                    </h3>
+                    <h3 className="text-blue-800 text-sm md:text-md ml-1">
+                      {favorito.weight / 10} kg
+                    </h3>
+                  </div>
+                </div>
+
+                <div className="flex justify-center  items-center">
+                  <p className=" text-blue-800 text-md md:text-lg w-32 line-clamp-5">
+                    {favorito.observations}{" "}
+                    asdasdasdasdasdasdfdasdfsdfasfdgasdfgdf
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
+      </div>
     </div>
   );
 };
