@@ -1,39 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
+import SearchInput from "../SearchInput";
 
 const Pokedex = ({ favoritos, avistados }) => {
-  const favoritosList = [];
-  const avistadosList = [];
+  const [searchResults, setSearchResults] = useState([]);
+  const [valorDaPesquisa, setValorDaPesquisa] = useState("");
 
-  favoritos.forEach((favorito) => {
-    favoritosList.push(favorito);
-  });
+  const handleSearch = (event) => {
+    const value = event.target.value.toLowerCase();
 
-  avistados.forEach((avistado) => {
-    avistadosList.push(avistado);
-  });
+    const filteredAvistados = avistados.filter((avistado) =>
+      avistado.name.toLowerCase().includes(value)
+    );
 
+    const filteredFavoritos = favoritos.filter((favorito) =>
+      favorito.name.toLowerCase().includes(value)
+    );
+
+    setSearchResults([...filteredAvistados, ...filteredFavoritos]);
+  };
+
+  const avistadosList = searchResults.length > 0 ? searchResults : avistados;
+  const favoritosList = favoritos.filter((favorito) =>
+    favorito.name.toLowerCase().includes(valorDaPesquisa.toLowerCase())
+  );
   return (
     <div className="w-full h-full flex flex-col">
-      {console.log(favoritos)}
+      <SearchInput
+        value={valorDaPesquisa}
+        handleSearch={handleSearch}
+        setValorDaPesquisa={setValorDaPesquisa}
+      />
+
       {console.log(avistados)}
+      {console.log(favoritos)}
 
       <div className="flex flex-col bg-white rounded-xl p-4">
         <h2 className="font-bold text-blue-800 text-lg md:text-xl mb-2">
           Avistados:
         </h2>
         <div className="flex justify-center md:justify-start">
-          <div className=" grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 my-4 ">
-            {avistadosList.map((avistado) => (
-              <div
-                className="w-32 border flex flex-col items-center justify-between bg-blue-100 rounded-lg shadow-2xl p-2"
-                key={avistado.id}
-              >
-                <h1 className="font-bold text-blue-800 uppercase text-sm md:text-md">
-                  {avistado.name}
-                </h1>
-                <img className="w-24 md:w-32" src={avistado.image} />
-              </div>
-            ))}
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 my-4 ">
+            {(searchResults.length > 0 ? searchResults : avistadosList).map(
+              (avistado) => (
+                <div
+                  className="w-32 border flex flex-col items-center justify-between bg-blue-100 rounded-lg shadow-2xl p-2"
+                  key={avistado.id}
+                >
+                  <h1 className="font-bold text-blue-800 uppercase text-sm md:text-md">
+                    {avistado.name}
+                  </h1>
+                  <img className="w-24 md:w-32" src={avistado.image} />
+                </div>
+              )
+            )}
           </div>
         </div>
       </div>
@@ -86,9 +105,8 @@ const Pokedex = ({ favoritos, avistados }) => {
                 </div>
 
                 <div className="flex justify-center  items-center">
-                  <p className=" text-blue-800 text-md md:text-lg w-32 line-clamp-5">
+                  <p className="text-justify text-blue-800 text-md md:text-lg w-32 break-words">
                     {favorito.observations}{" "}
-                    asdasdasdasdasdasdfdasdfsdfasfdgasdfgdf
                   </p>
                 </div>
               </div>

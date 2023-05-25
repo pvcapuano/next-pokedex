@@ -3,7 +3,7 @@ import useFetchPokemons from "./hook/useFetchPokemons";
 import Card from "../Card";
 import { toast } from "react-toastify";
 import { db } from "@/config/firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import { useAuthContext } from "@/hooks/useAuthContext";
 
 const Dashboard = () => {
@@ -26,18 +26,31 @@ const Dashboard = () => {
   };
 
   const handleSubmit = async (pokemon) => {
-    const ref = collection(db, "avistados");
+    const avistadosRef = collection(db, "avistados");
+    const querySnapshot = await getDocs(
+      query(
+        avistadosRef,
+        where("uid", "==", user.uid),
+        where("id", "==", pokemon.id)
+      )
+    );
 
-    await addDoc(ref, {
-      name: pokemon.name,
-      image: pokemon.image,
-      id: pokemon.id,
-      uid: user.uid,
-    });
+    if (querySnapshot.empty) {
+      await addDoc(avistadosRef, {
+        name: pokemon.name,
+        image: pokemon.image,
+        id: pokemon.id,
+        uid: user.uid,
+      });
 
-    toast.warn(`Voce avistou o ${pokemon.name}! Vamos capturá-lo?`, {
-      theme: "colored",
-    });
+      toast.warn(`Você avistou o ${pokemon.name}! Vamos capturá-lo?`, {
+        theme: "colored",
+      });
+    } else {
+      toast.error(`${pokemon.name} já foi adicionado à lista de avistados.`, {
+        theme: "colored",
+      });
+    }
   };
 
   return (
