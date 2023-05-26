@@ -3,9 +3,8 @@ import useFetchPokemons from "./hook/useFetchPokemons";
 import Card from "../Card";
 import { toast } from "react-toastify";
 import { db } from "@/config/firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import { useAuthContext } from "@/hooks/useAuthContext";
-import Link from "next/link";
 
 const Dashboard = () => {
   const limit = 10; // Número de Pokémon por página
@@ -27,23 +26,35 @@ const Dashboard = () => {
   };
 
   const handleSubmit = async (pokemon) => {
-    const ref = collection(db, "avistados");
+    const avistadosRef = collection(db, "avistados");
+    const querySnapshot = await getDocs(
+      query(
+        avistadosRef,
+        where("uid", "==", user.uid),
+        where("id", "==", pokemon.id)
+      )
+    );
 
-    await addDoc(ref, {
-      name: pokemon.name,
-      image: pokemon.image,
-      id: pokemon.id,
-      uid: user.uid,
-    });
+    if (querySnapshot.empty) {
+      await addDoc(avistadosRef, {
+        name: pokemon.name,
+        image: pokemon.image,
+        id: pokemon.id,
+        uid: user.uid,
+      });
 
-    toast.warn(`Voce avistou o ${pokemon.name}! Vamos capturá-lo?`, {
-      theme: "colored",
-    });
+      toast.warn(`Você avistou o ${pokemon.name}! Vamos capturá-lo?`, {
+        theme: "colored",
+      });
+    } else {
+      toast.error(`${pokemon.name} já foi adicionado à lista de avistados.`, {
+        theme: "colored",
+      });
+    }
   };
 
   return (
     <div className="flex flex-col justify-center items-center">
-      {console.log(pokemons)}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 my-3">
         {pokemons.map((pokemon) => (
           <Card
@@ -54,7 +65,7 @@ const Dashboard = () => {
         ))}
       </div>
 
-      <div className="w-3/5 md:w-2/5 lg:w-1/5 flex justify-between text-white p-2">
+      <div className="w-3/5 md:w-2/5 lg:w-1/5 flex justify-between text-blue-800 p-2">
         <button
           className="flex items-center justify-center"
           onClick={handlePrevPage}

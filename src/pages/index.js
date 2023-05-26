@@ -16,7 +16,6 @@ export default function Home() {
         <link rel="icon" href="/ball.jpg" />
       </Head>
       {!user && <Login />}
-      {/* {user && <Dashboard />} */}
       {user && <AppInicial />}
     </>
   );
