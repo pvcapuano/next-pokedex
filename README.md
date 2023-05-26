@@ -45,13 +45,17 @@ yarn dev
 
 ## Telas:
 
+![image](https://github.com/pvcapuano/desafio-ng/assets/10540844/0c5311fc-26ab-4ebc-a460-3a8362461870)
 <sub>Login</sub>
 
+![image](https://github.com/pvcapuano/desafio-ng/assets/10540844/2f0b1784-0509-4be7-ba18-4404a6b630c7)
 <sub>Dashboard</sub>
 
+![image](https://github.com/pvcapuano/desafio-ng/assets/10540844/44df5b9d-cd5f-41b8-9497-5a43a2c34f07)
 <sub>Firebase Firestore</sub>
 
-<sub>Context with Redux</sub>
+![image](https://github.com/pvcapuano/desafio-ng/assets/10540844/6d9849c5-df80-404f-9aa4-f53f53b92074)
+<sub>Code</sub>
 
 ## Projeto em produção:
 
