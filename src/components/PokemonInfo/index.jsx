@@ -11,10 +11,10 @@ const PokemonInfo = ({ pokemon }) => {
           </h1>
         </div>
 
-        <div className="flex  items-start justify-center">
+        <div className="flex flex-col md:flex-row items-start justify-center">
           {pokemon.types.map((item, index) => (
             <span
-              className="text-blue-800 font-bold bg-blue-100 text-sm md:text-md border rounded-md p-1 uppercase mx-2 cursor-pointer"
+              className="text-blue-800 font-bold bg-blue-100 text-sm md:text-md border rounded-md p-1 uppercase mx-2 cursor-pointer my-1"
               key={index}
             >
               {item.type.name}
