@@ -24,15 +24,12 @@ const Pokedex = ({ favoritos, avistados }) => {
     favorito.name.toLowerCase().includes(valorDaPesquisa.toLowerCase())
   );
   return (
-    <div className="w-full h-full flex flex-col">
+    <div className="w-full h-screen flex flex-col">
       <SearchInput
         value={valorDaPesquisa}
         handleSearch={handleSearch}
         setValorDaPesquisa={setValorDaPesquisa}
       />
-
-      {console.log(avistados)}
-      {console.log(favoritos)}
 
       <div className="flex flex-col bg-white rounded-xl p-4">
         <h2 className="font-bold text-blue-800 text-lg md:text-xl mb-2">

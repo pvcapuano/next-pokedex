@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { db } from "@/config/firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import { useAuthContext } from "@/hooks/useAuthContext";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
@@ -18,24 +18,37 @@ const Pokemon = ({ pokemon }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const ref = collection(db, "favoritos");
+    const favoritosRef = collection(db, "favoritos");
+    const querySnapshot = await getDocs(
+      query(
+        favoritosRef,
+        where("uid", "==", user.uid),
+        where("id", "==", pokemon.id)
+      )
+    );
 
-    await addDoc(ref, {
-      name: pokemon.name,
-      image: pokemon.sprites.other.home.front_default,
-      id: pokemon.id,
-      types: pokemon.types.map((item) => item.type.name),
-      height: pokemon.height,
-      weight: pokemon.weight,
-      observations: obsText,
-      uid: user.uid,
-    });
+    if (querySnapshot.empty) {
+      await addDoc(favoritosRef, {
+        name: pokemon.name,
+        image: pokemon.sprites.other.home.front_default,
+        id: pokemon.id,
+        types: pokemon.types.map((item) => item.type.name),
+        height: pokemon.height,
+        weight: pokemon.weight,
+        observations: obsText,
+        uid: user.uid,
+      });
 
-    setObsTex("");
-    toast.success(`Parabéns! Você capturou o ${pokemon.name}!`, {
-      theme: "colored",
-    });
-    router.push("/");
+      setObsTex("");
+      toast.success(`Parabéns! Você capturou o ${pokemon.name}!`, {
+        theme: "colored",
+      });
+      router.push("/");
+    } else {
+      toast.error(`${pokemon.name} já foi adicionado à lista de favoritos.`, {
+        theme: "colored",
+      });
+    }
   };
 
   return (
