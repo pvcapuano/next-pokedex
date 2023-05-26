@@ -1,38 +1,90 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Projeto:
 
-## Getting Started
+O projeto consiste em uma aplicação web que oferece aos usuários a possibilidade de cadastrar, organizar e pesquisar os pokemons avistados e capturados em suas aventuras. Para tornar a experiência mais ágil, foi implementada uma barra de pesquisa na Pokedex.
 
-First, run the development server:
+A segurança dos dados dos usuários é uma prioridade, e por isso a autenticação é realizada por meio do Firebase, garantindo acesso exclusivo aos pokemons cadastrados por cada usuário. Dessa forma, as informações ficam protegidas e acessíveis apenas ao dono da conta.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+A aplicação foi desenvolvida para ser utilizada em qualquer dispositivo com acesso à internet, proporcionando flexibilidade e praticidade aos usuários. Com a Pokedex personalizada, os treinadores têm uma ferramenta poderosa para acompanhar e aprimorar suas coleções de pokemons. A aplicação oferece uma experiência agradável e intuitiva, tornando o gerenciamento dos pokemons mais prático e organizado.
+
+## Resumo:
+
+- Aplicação web para cadastro de pokemons avistados e favoritados;
+- Autenticação através do Firebase.
+- Cadastro das informações no Firestore Database.
+
+## Identificação do problema:
+
+- Dificuldade de organização da Pokedex;
+- Falta de agilidade na pesquisa.
+
+## Solução:
+
+- Cadastro de pokemons;
+- Organização da Pokedex;
+- Acesso exclusivo e seguro através da autenticação com o Firebase.
+
+## Rodando o projeto:
+
+No terminal, digite:
+
+```
+git clone https://github.com/pvcapuano/desafio-ng.git
+cd desafio-ng
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Na pasta raiz, crie um arquivo chamado ".env.local" e cole o conteúdo do arquivo que foi disponibilizado por e-mail
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Feito isso, rode o comando abaixo:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+```
+yarn dev
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+####
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Telas:
 
-## Learn More
+<sub>Login</sub>
 
-To learn more about Next.js, take a look at the following resources:
+<sub>Dashboard</sub>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<sub>Firebase Firestore</sub>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<sub>Context with Redux</sub>
 
-## Deploy on Vercel
+## Projeto em produção:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<p>
+ <a href="https://my-workout-kw91.vercel.app/" target="_blank"> 
+  <img src="https://ml.globenewswire.com/Resource/Download/3a54c241-a668-4c94-9747-3d3da9da3bf2?size=2" alt="Vercel" width="100"/> 
+ </a>
+</p>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Tecnologias:
+
+- NextJs
+- React Hooks
+- Context
+- Custom Hooks
+- Redux
+- Tailwind
+- Toastify
+- Firebase Firestore
+- Firebase Authentication
+- Prettier
+
+## Atividades realizadas:
+
+- A escolha do Next.js como framework principal para o desenvolvimento da aplicação web, proporcionando uma base sólida e eficiente para a construção do projeto.
+- A implementação do Tailwind CSS como biblioteca de estilos, permitindo uma abordagem simplificada e eficaz para o desenvolvimento e estilização dos componentes da aplicação.
+- A utilização do Firebase Firestore como banco de dados, oferecendo uma solução confiável e escalável para armazenar e gerenciar as séries de treino cadastradas pelos usuários.
+- A integração do Firebase Authentication para garantir a autenticação segura dos usuários, protegendo os dados e fornecendo acesso exclusivo a cada usuário.
+- A adoção do Prettier como ferramenta de formatação de código, garantindo a padronização e a legibilidade do código ao manter uma formatação consistente e organizada.
+
+## Futuras melhorias:
+
+- Criar um botão para remover os pokemons da Pokedex.
+- Melhorar o design da aplicação.
+- Criar o fluxo de "Esqueci a senha"
+- Colocar autenticação via SSO.

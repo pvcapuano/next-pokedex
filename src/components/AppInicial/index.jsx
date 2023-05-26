@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Pokedex from "../Pokedex";
 import Dashboard from "../Dashboard";
 import Button from "../Button";
 import { useAuthContext } from "@/hooks/useAuthContext";
 import useCollection from "@/hooks/useCollection";
+import { useRouter } from "next/router";
 
 const AppInicial = () => {
   const [showPokedex, setShowPokedex] = useState(false);
   const { user } = useAuthContext();
+  const router = useRouter();
   const { documents: favoritos } = useCollection("favoritos", [
     "uid",
     "==",

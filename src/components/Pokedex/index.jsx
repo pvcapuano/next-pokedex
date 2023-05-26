@@ -24,7 +24,7 @@ const Pokedex = ({ favoritos, avistados }) => {
     favorito.name.toLowerCase().includes(valorDaPesquisa.toLowerCase())
   );
   return (
-    <div className="w-full h-screen flex flex-col">
+    <div className="w-full h-full flex flex-col ">
       <SearchInput
         value={valorDaPesquisa}
         handleSearch={handleSearch}
@@ -54,12 +54,12 @@ const Pokedex = ({ favoritos, avistados }) => {
         </div>
       </div>
 
-      <div className="flex flex-col bg-white rounded-xl p-4 my-8">
+      <div className="flex flex-col bg-white rounded-xl p-4 my-8 border">
         <h2 className="font-bold text-blue-800 text-lg md:text-xl mb-2">
           Favoritos:
         </h2>
-        <div className="flex justify-center lg:justify-start">
-          <div className=" grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 my-4 ">
+        <div className="flex justify-center lg:justify-start ">
+          <div className=" grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 my-4 ">
             {favoritosList.map((favorito) => (
               <div
                 className="w-48 md:w-56 min-h-full border flex flex-col items-center justify-between bg-blue-100 rounded-lg shadow-2xl p-2"

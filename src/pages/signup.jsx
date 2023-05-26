@@ -3,6 +3,8 @@ import Link from "next/link";
 import useSignupForm from "@/components/Login/hook/useSignupForm";
 
 const SignupPage = () => {
+  const [isLoggingIn, setIsLoggingIn] = useState(true);
+
   const { email, password, setEmail, setPassword, handleSubmit } =
     useSignupForm();
   return (
