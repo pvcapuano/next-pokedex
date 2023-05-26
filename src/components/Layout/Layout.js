@@ -4,7 +4,7 @@ export default function Layout({ children }) {
   return (
     <div>
       <Navbar />
-      <main className="bg-blue-700 ">{children}</main>
+      <main className="bg-blue-100 ">{children}</main>
     </div>
   );
 }
