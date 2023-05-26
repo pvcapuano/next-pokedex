@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { db } from "@/config/firebase";
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import { useAuthContext } from "@/hooks/useAuthContext";
@@ -11,6 +11,12 @@ const Pokemon = ({ pokemon }) => {
   const [obsText, setObsTex] = useState("");
   const { user } = useAuthContext();
   const router = useRouter();
+
+  useEffect(() => {
+    if (!user) {
+      router.push("/");
+    }
+  }, [user]);
 
   const handleOnChangeObsArea = (event) => {
     setObsTex(event.target.value);
