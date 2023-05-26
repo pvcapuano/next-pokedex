@@ -6,7 +6,7 @@ const PokemonInfo = ({ pokemon }) => {
           <h3 className="text-gray-500 text-sm md:text-md font-bold">
             # {pokemon.id}
           </h3>
-          <h1 className="font-bold uppercase text-2xl text-blue-800 ">
+          <h1 className="font-bold uppercase text-md md:text-lg text-blue-800 ">
             {pokemon.name}
           </h1>
         </div>
