@@ -31,7 +31,7 @@ const Pokedex = ({ favoritos, avistados }) => {
         setValorDaPesquisa={setValorDaPesquisa}
       />
 
-      <div className="flex flex-col bg-white rounded-xl p-4">
+      <div className="flex flex-col bg-white rounded-xl p-4 shadow-xl">
         <h2 className="font-bold text-blue-800 text-lg md:text-xl mb-2">
           Avistados:
         </h2>
@@ -54,7 +54,7 @@ const Pokedex = ({ favoritos, avistados }) => {
         </div>
       </div>
 
-      <div className="flex flex-col bg-white rounded-xl p-4 my-8 border">
+      <div className="flex flex-col bg-white rounded-xl p-4 my-8 border shadow-xl">
         <h2 className="font-bold text-blue-800 text-lg md:text-xl mb-2">
           Favoritos:
         </h2>
