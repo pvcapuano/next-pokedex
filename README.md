@@ -60,7 +60,7 @@ yarn dev
 ## Projeto em produção:
 
 <p>
- <a href="https://my-workout-kw91.vercel.app/" target="_blank"> 
+ <a href="desafio-ng.vercel.app" target="_blank"> 
   <img src="https://ml.globenewswire.com/Resource/Download/3a54c241-a668-4c94-9747-3d3da9da3bf2?size=2" alt="Vercel" width="100"/> 
  </a>
 </p>
