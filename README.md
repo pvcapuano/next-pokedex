@@ -51,6 +51,12 @@ yarn dev
 ![image](https://github.com/pvcapuano/next-pokedex/assets/10540844/efc8b968-4919-4f4c-bbbd-cde016a05ae5)
 <sub>Dashboard</sub>
 
+![image](https://github.com/pvcapuano/next-pokedex/assets/10540844/2e050f8a-1713-4a5c-a794-bac0222100b0)
+<sub>Pokemon Detail</sub>
+
+![image](https://github.com/pvcapuano/next-pokedex/assets/10540844/953eae43-b66c-4470-986f-e08c1881559a)
+<sub>Pokedex</sub>
+
 ![image](https://github.com/pvcapuano/next-pokedex/assets/10540844/5afd2e3c-69f0-4429-a481-752915e3f173)
 <sub>Firebase Firestore</sub>
 
