@@ -45,16 +45,16 @@ yarn dev
 
 ## Telas:
 
-![image](https://github.com/pvcapuano/desafio-ng/assets/10540844/0c5311fc-26ab-4ebc-a460-3a8362461870)
+![image](https://github.com/pvcapuano/next-pokedex/assets/10540844/513ef58a-5d1f-48c0-be77-4bb6cebc932f)
 <sub>Login</sub>
 
-![image](https://github.com/pvcapuano/desafio-ng/assets/10540844/2f0b1784-0509-4be7-ba18-4404a6b630c7)
+![image](https://github.com/pvcapuano/next-pokedex/assets/10540844/efc8b968-4919-4f4c-bbbd-cde016a05ae5)
 <sub>Dashboard</sub>
 
-![image](https://github.com/pvcapuano/desafio-ng/assets/10540844/44df5b9d-cd5f-41b8-9497-5a43a2c34f07)
+![image](https://github.com/pvcapuano/next-pokedex/assets/10540844/5afd2e3c-69f0-4429-a481-752915e3f173)
 <sub>Firebase Firestore</sub>
 
-![image](https://github.com/pvcapuano/desafio-ng/assets/10540844/6d9849c5-df80-404f-9aa4-f53f53b92074)
+![image](https://github.com/pvcapuano/next-pokedex/assets/10540844/3332e57a-b4c4-4c75-8b59-37cc90c8c07d)
 <sub>Code</sub>
 
 ## Projeto em produção:
