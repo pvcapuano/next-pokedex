@@ -33,7 +33,7 @@ cd next-pokedex
 yarn install
 ```
 
-Na pasta raiz, crie um arquivo chamado ".env.local" e cole o conteúdo do arquivo que foi disponibilizado por e-mail
+Na pasta raiz, crie um arquivo chamado ".env.local" e solicite por e-mail as variáveis de ambiente. 
 
 Feito isso, rode o comando abaixo:
 
@@ -88,7 +88,5 @@ yarn dev
 
 ## Futuras melhorias:
 
-- Criar um botão para remover os pokemons da Pokedex.
-- Melhorar o design da aplicação.
 - Criar o fluxo de "Esqueci a senha"
 - Colocar autenticação via SSO.
