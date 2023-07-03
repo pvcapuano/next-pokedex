@@ -28,8 +28,8 @@ A aplicação foi desenvolvida para ser utilizada em qualquer dispositivo com ac
 No terminal, digite:
 
 ```
-git clone https://github.com/pvcapuano/desafio-ng.git
-cd desafio-ng
+https://github.com/pvcapuano/next-pokedex.git
+cd next-pokedex
 yarn install
 ```
 
